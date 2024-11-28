@@ -1,0 +1,8 @@
+# Node modules
+node_modules/
+
+# Environment variables file
+.env
+
+# Backup directory (if you want to ignore backups)
+backups/

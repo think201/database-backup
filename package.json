@@ -1,0 +1,38 @@
+{
+  "name": "database-backup",
+  "version": "1.0.3",
+  "description": "A utility that can back up PostgreSQL or MongoDB databases.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node testBackup.js"
+  },
+  "keywords": [
+    "database",
+    "backup",
+    "postgresql",
+    "mongodb",
+    "aws",
+    "s3",
+    "automation"
+  ],
+  "author": "Kunal Bandekar",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/storage": "^5.8.5",
+    "aws-sdk": "^2.1030.0",
+    "commander": "^8.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "mongodb": "^4.1.0",
+    "pg": "^8.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/think201/database-backup"
+  },
+  "bugs": {
+    "url": "https://github.com/think201/database-backup/issues"
+  },
+  "homepage": "https://github.com/think201/database-backup#readme"
+}
