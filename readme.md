@@ -1,7 +1,6 @@
-# 🎉 Database Backup Tool
+# 🎉 @think201/database-backup
 
-
-Welcome to the **Database Backup Tool**! 🚀 Your trusty sidekick for effortlessly backing up your databases to AWS S3. Whether you're a PostgreSQL wizard or a MongoDB maestro, this tool has got your back!
+Welcome to the **Database Backup Tool** by [Think201](https://think201.com)! 🚀 Your trusty sidekick for effortlessly backing up your databases to AWS S3. Whether you're a PostgreSQL wizard or a MongoDB maestro, this tool has got your back!
 
 ## 🛠️ Features
 - **Database Support**: Back up your PostgreSQL and MongoDB databases like a pro! 🥇
@@ -14,16 +13,16 @@ Welcome to the **Database Backup Tool**! 🚀 Your trusty sidekick for effortles
 Ready to roll? Install the package with a single command:
 
 ```bash
-npm install database-backup
+npm install @think201/database-backup
 ```
 
 ## 🚀 Usage
 
-Let’s get this backup party started! Here’s how to use the Database Backup Tool:
+Let's get this backup party started! Here's how to use the Database Backup Tool:
 
 ```javascript
 require('dotenv').config(); // Load environment variables from .env file
-const AutomatedBackupTool = require('database-backup');
+const AutomatedBackupTool = require('@think201/database-backup');
 
 const backupTool = new AutomatedBackupTool({
     database: 'postgres', // Change to 'mongodb' if you want to test MongoDB
@@ -32,7 +31,8 @@ const backupTool = new AutomatedBackupTool({
     awsCredentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-        region: process.env.AWS_REGION 
+        region: process.env.AWS_REGION,
+        bucket: process.env.AWS_BUCKET // S3 bucket where backups will be stored
     },
     dbCredentials: {
         postgres: {
@@ -62,15 +62,26 @@ backupTool.backup()
 To make this tool work its magic, you need to set up some environment variables. Create a `.env` file in the root of your project and fill it with your secrets:
 
 ```plaintext
+# PostgreSQL Credentials
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 POSTGRES_USER=your_username
 POSTGRES_PASSWORD=your_password
 POSTGRES_DATABASE=your_database
 
+# MongoDB Credentials (if using MongoDB)
+MONGODB_URL=mongodb://username:password@localhost:27017/database
+
 # AWS Credentials
 AWS_ACCESS_KEY_ID=your_access_key_id
 AWS_SECRET_ACCESS_KEY=your_secret_access_key
 AWS_REGION=your_aws_region
+AWS_BUCKET=your_s3_bucket_name
 ```
 
+## 📝 Requirements
+
+- Node.js 12 or higher
+- For PostgreSQL backups: `pg_dump` command-line tool must be installed
+- For MongoDB backups: `mongodump` command-line tool must be installed
+- AWS credentials with S3 access

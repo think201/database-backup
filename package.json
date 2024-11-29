@@ -1,6 +1,6 @@
 {
-  "name": "database-backup",
-  "version": "1.0.3",
+  "name": "@think201/database-backup",
+  "version": "1.0.1",
   "description": "A utility that can back up PostgreSQL or MongoDB databases.",
   "main": "src/index.js",
   "scripts": {
@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/think201/database-backup/issues"
   },
-  "homepage": "https://github.com/think201/database-backup#readme"
+  "homepage": "https://github.com/think201/database-backup#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
