@@ -53,12 +53,12 @@ class AutomatedBackupTool {
     }
 
     async backupPostgres() {
-        const backupFile = path.join(this.backupDir, `postgres_backup_${Date.now()}.sql`);
+        const backupFile = path.join(this.backupDir, `postgres_backup_${Date.now()}.dump`);
         
         // Set the PGPASSWORD environment variable temporarily
-        const command = `PGPASSWORD=${this.dbCredentials.postgres.password} pg_dump -h ${this.dbCredentials.postgres.host} -U ${this.dbCredentials.postgres.user} -d ${this.dbCredentials.postgres.database} -f ${backupFile}`;
+        // Added -Fc for custom format, --no-owner and --no-privileges to avoid permission issues during restore
+        const command = `PGPASSWORD=${this.dbCredentials.postgres.password} pg_dump -Fc --no-owner --no-privileges -h ${this.dbCredentials.postgres.host} -U ${this.dbCredentials.postgres.user} -d ${this.dbCredentials.postgres.database} -f ${backupFile}`;
         
-
         return new Promise((resolve, reject) => {
             exec(command, (error, stdout, stderr) => {
                 if (error) {
