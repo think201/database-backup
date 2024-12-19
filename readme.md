@@ -32,7 +32,8 @@ const backupTool = new AutomatedBackupTool({
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
         region: process.env.AWS_REGION,
-        bucket: process.env.AWS_BUCKET // S3 bucket where backups will be stored
+        bucket: process.env.AWS_BUCKET, // S3 bucket where backups will be stored
+        backupDir: 'my_custom_backup_folder', // Specify your custom backup directory
     },
     dbCredentials: {
         postgres: {
