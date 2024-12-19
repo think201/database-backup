@@ -10,7 +10,7 @@ class AutomatedBackupTool {
         this.database = database;
         this.storage = storage;
         this.retention = retention || 7; // Default to config value if not provided
-        this.backupDir = path.join(__dirname, `../${awsCredentials.backupDir? awsCredentials.backupDir :"backups"}`); // Directory to store backups
+        this.backupDir = path.join(__dirname, `../backups`); // Directory to store backups
         this.ensureBackupDir();
 
         // Store AWS credentials in the class instance
@@ -105,11 +105,12 @@ class AutomatedBackupTool {
 
     async uploadToS3(filePath) {
 
+        const backupPath = this.awsCredentials.backupDir?this.awsCredentials.backupDir:"database-backups"
         const fileContent = fs.readFileSync(filePath);
         const fileName = path.basename(filePath);
         const params = {
             Bucket: this.awsCredentials.bucket,
-            Key: `backups/${fileName}`, // You can customize the path in the bucket
+            Key: `${backupPath}/${fileName}`, // You can customize the path in the bucket
             Body: fileContent,
         };
 

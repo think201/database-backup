@@ -27,7 +27,7 @@ const AutomatedBackupTool = require('@think201/database-backup');
 const backupTool = new AutomatedBackupTool({
     database: 'postgres', // Change to 'mongodb' if you want to test MongoDB
     storage: 'aws',
-    retention: 7, // Keep backups for 7 days (because who needs clutter?)
+    retention: 7, // Keep backups for 7 days (because who needs clutter?
     awsCredentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
